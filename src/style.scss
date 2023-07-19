@@ -1,0 +1,117 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your custom styles */
+
+@layer base {
+    .dark{
+        @apply bg-slate-800;
+    }
+    .container-fluid{
+        @apply px-55 tablet:px-30;
+    }
+    .container-small{
+        @apply px-100 tablet:px-30;
+    }
+    ul{
+        @apply list-none m-0 p-0;
+    }
+    a {
+        @apply no-underline; 
+    }
+    a, button, input, textarea, select {
+        @apply outline-0;
+        box-shadow: none;
+    }
+    p{
+        @apply m-0 text-16 font-poppins;
+    }
+    img{
+        @apply object-cover h-full w-full;
+    }
+    ul {
+        @apply p-0 mt-0;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        @apply m-0 font-poppins font-black leading-auto capitalize;
+    }
+    h1, .h1 {
+        @apply text-64 tablet:text-48; 
+    } 
+    h2, .h2 {
+        @apply text-48 mb-14 tablet:text-32; 
+    }
+    h3, .h3 {
+        @apply text-32 tablet:text-24; 
+    }
+    h4, .h4 {
+        @apply text-24 tablet:text-20;
+    }
+    h5, .h5 {
+        @apply text-20 tablet:text-16;
+    }
+    h6, .h6 {
+        @apply text-16;
+    } 
+    section{
+        @apply relative;
+    }
+}
+@layer components {
+    .seachButton{
+        @apply flex items-center gap-2;
+
+        &__image{
+            @apply h-16;
+        }
+    }
+   .search-popup{
+        @apply fixed -top-full left-0 right-0 transition-all duration-500 ease-in backdrop-blur z-50;
+
+        &.show{
+            @apply top-0 transition-all duration-500 ease-out bottom-0;
+        }
+   }
+   .search-form{
+        @apply bg-slate-800 p-28;
+
+        .form-wrapper{
+            @apply max-w-7xl m-auto flex;
+
+            .close-icon{
+                @apply text-primary;
+            }
+        }
+    }
+   .search-form .form-wrapper input{
+        @apply bg-transparent outline-none text-primary tracking-widest flex-1 border-b-2 border-solid border-b-slate-600 py-4;
+
+        &:focus{
+         @apply border-b-white;
+        }
+  }
+  .heroSwiper{
+    @apply h-650 !pb-80; 
+
+    .heroSwiper_image{
+        @apply rounded-37 h-full;
+
+        &__img{
+            @apply object-center rounded-37;
+        }
+    }
+    .swiper-pagination{
+        .swiper-pagination-bullet{
+            @apply h-5 w-5 !mx-2 shadow-pagiation-Shadow transition-all duration-300 ease-linear bg-primary;
+
+            &.swiper-pagination-bullet-active{
+                @apply bg-primary shadow-pagiation-Shadow-active transition-all duration-300 ease-linear;
+            }
+        }
+    }
+  }
+}
+
+/* More styles... */
