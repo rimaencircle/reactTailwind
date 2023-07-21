@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -7,13 +9,31 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { Pagination } from 'swiper/modules';
+gsap.registerPlugin(ScrollTrigger);
+
 
 function Home() {
+
+  const fadeIn = useRef(null);
+
+  useEffect(() => {
+    // Animate the element using GSAP ScrollTrigger
+    gsap.to(fadeIn.current, {
+      opacity: 1,
+      y: 0,
+      scrollTrigger: {
+        trigger: fadeIn.current,
+        once: false,
+      },
+    });
+  }, []);
+
   return (
     <>
-      <div className='heroHeading text-center mb-60 pt-100'>
-        <h1 className='font-bold capitalize text-5xl text-slate-600 dark:text-white mb-20'> <span className='text-primary'>Unlimited</span> movies, TV shows and more</h1>
-        <p className='dark:text-yellow-50'>Watch anywhere. Cancel anytime.</p>
+      <div ref={fadeIn} className='heroHeading mb-60 pt-100 fadeIn'>
+        <div className='container-small'>
+        <h1 className='font-bold capitalize text-5xl text-slate-600 dark:text-white mb-20'> <span className='text-primary'>This is Micca.</span>A blog that covers productivity, tips, inspiration, and strategies for massive profits.</h1>
+        </div>
       </div>
       <Swiper
         slidesPerView={5}
@@ -38,8 +58,8 @@ function Home() {
           1199: {
             slidesPerView: 5,
           },
+       
         }}
-        className="heroSwiper"
       >
         <SwiperSlide>
           <div className='heroSwiper_image'>

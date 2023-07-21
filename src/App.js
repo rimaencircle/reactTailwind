@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Home from './components/Home/Home'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header'
@@ -9,8 +9,6 @@ import Originals from './components/Originals/Originals';
 import './style.css';
 
 function App() {
-
-
 
   return (
     <>

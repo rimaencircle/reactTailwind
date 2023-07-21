@@ -6,6 +6,10 @@
 /* Your custom styles */
 
 @layer base {
+    body{
+        -webkit-font-smoothing: antialiased;
+        @apply font-global relative text-textColor p-0 m-0 overflow-x-hidden;
+    }
     .dark{
         @apply bg-slate-800;
     }
@@ -19,23 +23,33 @@
         @apply list-none m-0 p-0;
     }
     a {
-        @apply no-underline; 
+        @apply no-underline font-semibold text-primary transition-all duration-500 ease-in-out relative; 
+    }
+    a::before{
+        content: '';
+        @apply absolute bottom-minus_5 left-0 right-0  h-1 w-0 bg-primary -z-10 transition-all duration-500 ease-in-out;
+    }
+    a:hover::before{
+        @apply w-full;
     }
     a, button, input, textarea, select {
-        @apply outline-0;
-        box-shadow: none;
+        @apply outline-0 shadow-none;
     }
     p{
-        @apply m-0 text-16 font-poppins;
+        @apply m-0 text-16 font-global;
     }
     img{
         @apply object-cover h-full w-full;
     }
-    ul {
-        @apply p-0 mt-0;
+    ul li{
+        @apply relative text-textColor dark:text-white pl-20;
+    }
+    ul li::before{
+        content: '';
+        @apply absolute left-0 top-8 h-6 w-6 rounded-full bg-primary;
     }
     h1, h2, h3, h4, h5, h6 {
-        @apply m-0 font-poppins font-black leading-auto capitalize;
+        @apply m-0 font-heading font-black leading-auto capitalize;
     }
     h1, .h1 {
         @apply text-64 tablet:text-48; 
@@ -55,63 +69,85 @@
     h6, .h6 {
         @apply text-16;
     } 
+    button{
+        @apply p-0 border-none shadow-none outline-none bg-transparent cursor-pointer;
+    }
     section{
         @apply relative;
+    }
+    .menu ul{
+        @apply list-none p-0 m-0;
+    }
+    .menu ul li{
+        @apply pl-0 before:content-none;
+    }
+    .menu ul li a{
+        @apply text-slate-900 dark:text-white relative hover:text-primary dark:hover:text-primary;
+    }
+    .fadeIn{
+        @apply relative translate-y-20 opacity-50 overflow-hidden;
+    }
+    .zoomAnim img{
+        transition:all 1s cubic-bezier(0.23, 0.93, 0.23, 0.93);
+        transform: scale(0);
     }
 }
 @layer components {
     .seachButton{
         @apply flex items-center gap-2;
-
-        &__image{
-            @apply h-16;
-        }
+    }
+    .seachButton__image{
+        @apply h-16;
     }
    .search-popup{
         @apply fixed -top-full left-0 right-0 transition-all duration-500 ease-in backdrop-blur z-50;
-
-        &.show{
-            @apply top-0 transition-all duration-500 ease-out bottom-0;
-        }
+   }
+   .search-popup.show{
+        @apply top-0 transition-all duration-500 ease-out bottom-0;
    }
    .search-form{
         @apply bg-slate-800 p-28;
-
-        .form-wrapper{
-            @apply max-w-7xl m-auto flex;
-
-            .close-icon{
-                @apply text-primary;
-            }
-        }
+    }
+    .search-form .form-wrapper{
+        @apply max-w-7xl m-auto flex;
+    }
+    .search-form .form-wrapper .close-icon{
+        @apply text-primary;
     }
    .search-form .form-wrapper input{
-        @apply bg-transparent outline-none text-primary tracking-widest flex-1 border-b-2 border-solid border-b-slate-600 py-4;
-
-        &:focus{
-         @apply border-b-white;
-        }
-  }
-  .heroSwiper{
-    @apply h-650 !pb-80; 
-
-    .heroSwiper_image{
+        @apply bg-transparent outline-none text-primary tracking-widest flex-1 border-b-2 border-solid border-b-slate-600 py-4 focus:border-b-white;
+    }
+    .heroSwiper{
+        @apply h-650 !pb-80; 
+    }
+    .heroSwiper .heroSwiper_image{
         @apply rounded-37 h-full;
-
-        &__img{
-            @apply object-center rounded-37;
-        }
     }
-    .swiper-pagination{
-        .swiper-pagination-bullet{
-            @apply h-5 w-5 !mx-2 shadow-pagiation-Shadow transition-all duration-300 ease-linear bg-primary;
-
-            &.swiper-pagination-bullet-active{
-                @apply bg-primary shadow-pagiation-Shadow-active transition-all duration-300 ease-linear;
-            }
-        }
+    .heroSwiper .heroSwiper_image .heroSwiper_image__img{
+        @apply object-center rounded-37;
     }
-  }
+    .heroSwiper .swiper-pagination .swiper-pagination-bullet{
+        @apply h-5 w-5 !mx-2 shadow-pagiation-Shadow transition-all duration-300 ease-linear bg-primary;
+    }
+    .heroSwiper .swiper-pagination .swiper-pagination-bullet-active{
+        @apply bg-primary shadow-pagiation-Shadow-active transition-all duration-300 ease-linear;
+    }
 }
 
 /* More styles... */
+
+/* Responsive CSS Start */
+
+@screen laptop{
+
+}
+@screen tablet{
+
+}
+@screen md{
+
+}
+@screen small{
+
+}
+/* Responsive CSS End */
